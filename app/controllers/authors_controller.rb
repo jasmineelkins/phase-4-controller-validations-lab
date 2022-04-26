@@ -21,7 +21,7 @@ class AuthorsController < ApplicationController
 
   def render_invalid_response(invalid)
     render json: {
-             error: invalid.record.errors.full_messages,
+             errors: invalid.record.errors,
            },
            status: :unprocessable_entity
   end

@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   def update
     post = Post.find(params[:id])
 
-    post.update(post_params)
+    post.update!(post_params)
 
     render json: post
   end
@@ -23,7 +23,7 @@ class PostsController < ApplicationController
 
   def render_invalid_response(invalid)
     render json: {
-             error: invalid.record.errors.full_messages,
+             errors: invalid.record.errors,
            },
            status: :unprocessable_entity
   end
